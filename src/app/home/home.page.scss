@@ -9,6 +9,16 @@
     --border-style: none;
 }
 
+[location-item] {
+    margin-bottom: 0;
+    ion-row {
+        float: right;
+        ion-icon {
+            padding-left: 4px;
+        }
+    }
+}
+
 ion-segment {
     margin-bottom: 16px;
 }

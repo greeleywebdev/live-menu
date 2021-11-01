@@ -49,9 +49,17 @@ ion-segment {
 }
 
 ion-router-outlet {
-    margin-top: 96px;
+    margin-top: 68px;
 }
 
 ion-grid, ion-col {
     padding: 0;
+}
+
+.custom-modal-class .modal-wrapper {
+    max-height: 60%;
+    position: absolute;
+    bottom: 0;
+    border-top-right-radius: 18px;
+    border-top-left-radius: 18px;
 }

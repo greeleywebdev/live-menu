@@ -1,5 +1,5 @@
 export interface Menu {
-    locationId: number;
+    location: string;
     categories: Array<Category>;
 }
 

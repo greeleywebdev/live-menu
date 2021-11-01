@@ -3,8 +3,21 @@
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
 
+    <ion-item no-border location-item>
+        <ion-grid>
+            <ion-row>
+                <ion-button fill="clear" color="primary" (click)="presentLocationModal()">
+                    <ion-label>{{activeLocation}}</ion-label>
+                    <ion-label>
+                        <ion-icon name="location-sharp"></ion-icon>
+                    </ion-label>
+                </ion-button>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+
     <ion-item no-border>
-        <ion-searchbar (ionChange)="search($event)"></ion-searchbar>
+        <ion-searchbar [(ngModel)]="searchValue" (ionChange)="search($event)"></ion-searchbar>
     </ion-item>
 
     <ion-segment (ionChange)="segmentChanged($event)" color="primary" mode="ios" scrollable="true"
