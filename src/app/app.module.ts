@@ -1,4 +1,5 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -8,19 +9,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 
+const components = [
+  HeaderComponent,
+]
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    components
   ],
   entryComponents: [
-    HeaderComponent
+    components
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule
+  ],
   exports:  [
-    HeaderComponent
+    components
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    HttpClient],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,0 +1,6 @@
+<div menu-item *ngIf="menu">
+  <ion-item *ngFor="let item of menu">
+    <ion-label color="secondary" header>{{item.header}}</ion-label>
+    <ion-toggle checked="{{item.isActive}}" color="primary" (ionChange)="itemToggle($event, item.header)" mode="ios"></ion-toggle>
+  </ion-item>
+</div>
