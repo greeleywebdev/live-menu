@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import "~@ionic/angular/css/display.css";
+@import '~@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,16 +25,41 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-[header] {
-    height: 8rem;
-    --background: #dc4649;
-    ion-title {
-        margin-top: 4rem;
-        ion-avatar {
-            margin-left: auto;
-            margin-right: auto;
-            width: 8rem;
-            height: auto;
-        }
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+ion-item {
+    --padding-start: 0;
+    div {
+        width: 100%;
+        margin-top: 16px;
+        margin-bottom: 8px;
+        margin-left: 8px;
     }
+}
+
+ion-segment {
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    ion-segment-button {
+        min-width: fit-content;
+    }
+}
+
+ion-router-outlet {
+    margin-top: 68px;
+}
+
+ion-grid, ion-col {
+    padding: 0;
+}
+
+.custom-modal-class .modal-wrapper {
+    max-height: 60%;
+    position: absolute;
+    bottom: 0;
+    border-top-right-radius: 18px;
+    border-top-left-radius: 18px;
 }

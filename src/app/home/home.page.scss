@@ -1,0 +1,43 @@
+[section-header] {
+    margin-left: 8px;
+    font-family: "Arvo", serif;
+    font-size: 18pt;
+}
+
+[no-border] {
+    margin-bottom: 16px;
+    --border-style: none;
+}
+
+[location-item] {
+    margin-bottom: 0;
+    ion-row {
+        float: right;
+        ion-icon {
+            padding-left: 4px;
+        }
+    }
+}
+
+ion-segment {
+    margin-bottom: 16px;
+}
+
+[menu-item] {
+    [header] {
+        font-family: "Arvo";
+        font-size: 14pt;
+        margin-left: 12px;
+    }
+}
+
+[update-section] {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    ion-col {
+        text-align: center;
+        ion-button {
+            width: 95%;
+        }
+    }
+}

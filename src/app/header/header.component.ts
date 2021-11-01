@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.imgSrc = 'https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y';
+    this.imgSrc = 'https://images.squarespace-cdn.com/content/v1/58b449258419c27c67294376/298b8bc4-0003-446e-92de-3ed03ef79c0b/Red+Stripes+Logo_Northern+Row-01.png?format=1500w';
   }
 
 }
