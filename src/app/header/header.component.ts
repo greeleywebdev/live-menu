@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-header',
@@ -6,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  imgSrc: String;
+  imgSrc: string;
 
-  constructor() { }
+  constructor(public data: DataService) { }
 
   ngOnInit() {
-    this.imgSrc = 'https://images.squarespace-cdn.com/content/v1/58b449258419c27c67294376/298b8bc4-0003-446e-92de-3ed03ef79c0b/Red+Stripes+Logo_Northern+Row-01.png?format=1500w';
+    this.data.getFullMenu(this.data.merchantId).subscribe(data => {
+      this.imgSrc = data.logo;
+    });
   }
 
 }

@@ -10,7 +10,21 @@
 </ion-header>
 
 <ion-content>
-  <ion-labe>
-    Hello
-  </ion-labe>
+  <!-- <ion-item *ngFor="let item of listOfLocations">
+    <ion-icon name="location-sharp" color="primary"></ion-icon>
+    <ion-label>{{item.name}}</ion-label>
+  </ion-item> -->
+  <ion-item (click)="dismissModal()">
+    <ion-icon name="location-sharp" color="primary"></ion-icon>
+    <ion-label>W McMicken Ave, Cincinnati</ion-label>
+  </ion-item>
+  <ion-item (click)="dismissModal()">
+    <ion-label>Mobile Van 1</ion-label>
+  </ion-item>
+  <ion-item (click)="dismissModal()">
+    <ion-label>Mobile Van 2</ion-label>
+  </ion-item>
+  <ion-item (click)="dismissModal()">
+    <ion-label>Washington Park Popup</ion-label>
+  </ion-item>
 </ion-content>

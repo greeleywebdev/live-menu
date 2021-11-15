@@ -6,12 +6,12 @@
     <ion-item no-border location-item>
         <ion-grid>
             <ion-row>
-                <ion-button fill="clear" color="primary" (click)="presentLocationModal()">
+                <ion-label color="primary" (click)="presentLocationModal()" location-btn>
                     <ion-label>{{activeLocation}}</ion-label>
                     <ion-label>
                         <ion-icon name="location-sharp"></ion-icon>
                     </ion-label>
-                </ion-button>
+                </ion-label>
             </ion-row>
         </ion-grid>
     </ion-item>
@@ -28,28 +28,11 @@
     </ion-segment>
 
     <div menu-item *ngFor="let section of shownMenu">
-        <ion-item *ngFor="let item of section.list" [hidden]="item.hidden">
-            <ion-label color="secondary" header>{{item.header}}</ion-label>
-            <ion-toggle checked="{{item.isActive}}" color="primary" (ionChange)="itemToggle($event, item.header)"
+        <ion-item *ngFor="let item of section.items" [hidden]="item.hidden">
+            <ion-label color="secondary" header>{{item.name}}</ion-label>
+            <ion-toggle checked="{{item.is_active}}" color="primary" (ionChange)="itemToggle($event, item.name)"
                 mode="ios"></ion-toggle>
         </ion-item>
     </div>
 
 </ion-content>
-
-<ion-toolbar *ngIf="this.data.showMenuUpdateButton" update-section>
-    <ion-grid>
-        <ion-row>
-            <ion-col size="6">
-                <ion-button fill="outline" (click)="cancelChanges()">
-                    <ion-label>Cancel</ion-label>
-                </ion-button>
-            </ion-col>
-            <ion-col size="6">
-                <ion-button (click)="saveChanges()">
-                    <ion-label>Save</ion-label>
-                </ion-button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-</ion-toolbar>

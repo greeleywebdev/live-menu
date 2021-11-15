@@ -29,6 +29,5 @@ export class MenuItemComponent implements OnInit {
       value: checkedValue
     }
     this.listOfChanges.push(changedItem);
-    this.data.showMenuUpdateButton = true;
   }
 }

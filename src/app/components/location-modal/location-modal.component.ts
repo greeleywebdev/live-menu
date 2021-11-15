@@ -7,10 +7,18 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./location-modal.component.scss'],
 })
 export class LocationModalComponent implements OnInit {
+  listOfLocations = [];
 
   constructor(public modalController: ModalController) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.listOfLocations = [
+      {name: 'W McMicken Ave, Cincinnati'},
+      {name: 'Mobile Van 1'},
+      {name: 'Mobile Van 2'},
+      {name: 'Convention Pop Up'}
+    ];
+  }
 
   dismissModal() {
       this.modalController.dismiss();

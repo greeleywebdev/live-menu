@@ -13,6 +13,9 @@
     margin-bottom: 0;
     ion-row {
         float: right;
+        [location-btn] {
+            display: inline-flex;
+        }
         ion-icon {
             padding-left: 4px;
         }
@@ -28,16 +31,5 @@ ion-segment {
         font-family: "Arvo";
         font-size: 14pt;
         margin-left: 12px;
-    }
-}
-
-[update-section] {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    ion-col {
-        text-align: center;
-        ion-button {
-            width: 95%;
-        }
     }
 }

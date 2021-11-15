@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { LoadingController } from '@ionic/angular';
+import { ENDPOINTS } from '../models/Endpoints';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
   menu: any;
-  showMenuUpdateButton: boolean;
+  merchantLogo: string;
+  merchantId = "6189917c5cb1dd7c4aac10ed";
   showLoader = false;
 
   constructor(private httpClient: HttpClient, private loadingController: LoadingController) { }
@@ -29,15 +31,16 @@ export class DataService {
     await this.loadingController.dismiss();
   }
 
-  public getFullMenu(): any {
-    return this.httpClient.get('assets/files/NorthernRowMenu.json');
+  public getFullMenu(merchantId: string): any {
+    return this.httpClient.get(ENDPOINTS.getFullMenu + merchantId);
   }
 
-  saveChanges(changes): void {
-      // TODO: POST call to service.
-      setTimeout(() => {
-        this.loadingController.dismiss();
-      }, 50);
+  public saveChanges(merchantId, changedMenu): any {
+    return this.httpClient.put('http://127.0.0.1:8000/merchants/' + merchantId, changedMenu).subscribe({
+      error: error => {
+        console.error('There was an error!', error);
+      }
+    });
   }
 
 }
