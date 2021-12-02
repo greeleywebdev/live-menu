@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ModalController } from '@ionic/angular';
 import { LocationModalComponent } from '../components/location-modal/location-modal.component';
-import { Category, Menu } from '../models/menu';
+import { Menu } from '../models/menu';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -37,6 +37,7 @@ export class HomePage {
     this.editableMenu = undefined;
     return this.data.getFullMenu(this.data.merchantId).subscribe(data => {
       this.titleService.setTitle('LiveMenu | ' + data.name);
+      this.data.merchantLogo = data.logo;
       this.editableMenu = data;
       delete this.editableMenu._id;
       this.menu = data.menu.categories;
