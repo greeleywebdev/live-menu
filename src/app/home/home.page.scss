@@ -1,7 +1,31 @@
+[app-header] {
+    height: 12rem;
+    --background: var(--ion-color-primary);
+    --border-style: none;
+    text-align: center;
+    img {
+        margin-top: 2rem;
+        width: 8rem;
+        height: auto;
+    }
+}
+
+ion-segment {
+    margin-bottom: 16px;
+}
+
 [section-header] {
     margin-left: 8px;
     font-family: "Arvo", serif;
     font-size: 18pt;
+}
+
+[menu-item] {
+    [header] {
+        font-family: "Arvo";
+        font-size: 14pt;
+        margin-left: 12px;
+    }
 }
 
 [no-border] {
@@ -19,17 +43,5 @@
         ion-icon {
             padding-left: 4px;
         }
-    }
-}
-
-ion-segment {
-    margin-bottom: 16px;
-}
-
-[menu-item] {
-    [header] {
-        font-family: "Arvo";
-        font-size: 14pt;
-        margin-left: 12px;
     }
 }

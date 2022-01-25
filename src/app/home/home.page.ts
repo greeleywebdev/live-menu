@@ -37,6 +37,7 @@ export class HomePage {
     this.editableMenu = undefined;
     return this.data.getFullMenu(this.data.merchantId).subscribe(data => {
       this.titleService.setTitle('LiveMenu | ' + data.name);
+      this.data.merchantLogo = data.logo;
       this.editableMenu = data;
       delete this.editableMenu._id;
       this.menu = data.menu.categories;

@@ -11,6 +11,7 @@ export class DataService {
   merchantLogo: string;
   merchantId = "6189917c5cb1dd7c4aac10ed";
   showLoader = false;
+  hideMenuHeader = false;
 
   constructor(private httpClient: HttpClient, private loadingController: LoadingController) { }
 
@@ -36,7 +37,7 @@ export class DataService {
   }
 
   public saveChanges(merchantId, changedMenu): any {
-    return this.httpClient.put('http://127.0.0.1:8000/merchants/' + merchantId, changedMenu).subscribe({
+    return this.httpClient.put(ENDPOINTS.updateMerchantMenu + merchantId, changedMenu).subscribe({
       error: error => {
         console.error('There was an error!', error);
       }
