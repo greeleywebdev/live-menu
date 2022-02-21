@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { LoadingController } from '@ionic/angular';
 import { ENDPOINTS } from '../models/Endpoints';
 
@@ -12,6 +12,10 @@ export class DataService {
   merchantId = "6189917c5cb1dd7c4aac10ed";
   showLoader = false;
   hideMenuHeader = false;
+
+  httpHeader = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
   constructor(private httpClient: HttpClient, private loadingController: LoadingController) { }
 
@@ -33,7 +37,7 @@ export class DataService {
   }
 
   public getFullMenu(merchantId: string): any {
-    return this.httpClient.get(ENDPOINTS.getFullMenu + merchantId);
+    return this.httpClient.get(ENDPOINTS.getFullMenu + merchantId, this.httpHeader);
   }
 
   public saveChanges(merchantId, changedMenu): any {

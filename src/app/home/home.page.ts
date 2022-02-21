@@ -125,7 +125,13 @@ export class HomePage {
   }
 
   clearSearchValue(): void {
-    this.searchValue = '';
+    const ev = {
+      target: {
+        value: ''
+      }
+    };
+    this.searchValue = ev.target.value;
+    this.search(ev);
   }
 
 

@@ -1,4 +1,4 @@
-const GATEWAY_URL = "http://0.0.0.0:80";
+const GATEWAY_URL = "http://livemenu-api.eastus.azurecontainer.io";
 
 export const ENDPOINTS = {
     getFullMenu: GATEWAY_URL + '/merchants/',

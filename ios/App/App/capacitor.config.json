@@ -1,0 +1,6 @@
+{
+	"appId": "com.livemenu",
+	"appName": "live-menu",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
