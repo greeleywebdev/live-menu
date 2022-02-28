@@ -3,6 +3,10 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { LoadingController } from '@ionic/angular';
 import { ENDPOINTS } from '../models/Endpoints';
 
+import '@capacitor-community/http';
+import { Plugins } from '@capacitor/core';
+const { Http } = Plugins;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +21,7 @@ export class DataService {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-  constructor(private httpClient: HttpClient, private loadingController: LoadingController) { }
+  constructor(private loadingController: LoadingController) { }
 
   async presentLoader() {
     this.showLoader = true;
@@ -37,14 +41,19 @@ export class DataService {
   }
 
   public getFullMenu(merchantId: string): any {
-    return this.httpClient.get(ENDPOINTS.getFullMenu + merchantId, this.httpHeader);
+    return Http.get(ENDPOINTS.getFullMenu + merchantId);
   }
 
   public saveChanges(merchantId, changedMenu): any {
-    return this.httpClient.put(ENDPOINTS.updateMerchantMenu + merchantId, changedMenu).subscribe({
-      error: error => {
-        console.error('There was an error!', error);
-      }
+    return Http.put(ENDPOINTS.updateMerchantMenu + merchantId, changedMenu).then(data => {
+      console.log('Success');
+    })
+    .catch(error => {
+
+      console.log(error.status);
+      console.log(error.error); // error message as string
+      console.log(error.headers);
+  
     });
   }
 

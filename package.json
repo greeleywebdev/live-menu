@@ -19,14 +19,16 @@
     "@angular/platform-browser": "~12.1.1",
     "@angular/platform-browser-dynamic": "~12.1.1",
     "@angular/router": "~12.1.1",
+    "@awesome-cordova-plugins/http": "^5.39.1",
+    "@capacitor-community/http": "^1.4.1",
     "@capacitor/app": "1.0.3",
-    "@capacitor/core": "^3.4.0",
+    "@capacitor/core": "^3.4.1",
     "@capacitor/haptics": "1.1.0",
-    "@capacitor/ios": "^3.4.0",
+    "@capacitor/ios": "^3.4.1",
     "@capacitor/keyboard": "1.1.0",
     "@capacitor/status-bar": "1.0.3",
     "@ionic/angular": "^5.5.2",
-    "cordova-ios": "5.1.1",
+    "cordova-plugin-advanced-http": "^3.2.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
@@ -41,7 +43,7 @@
     "@angular/compiler": "~12.1.1",
     "@angular/compiler-cli": "~12.1.1",
     "@angular/language-service": "~12.0.1",
-    "@capacitor/cli": "^3.4.0",
+    "@capacitor/cli": "^3.4.1",
     "@ionic/angular-toolkit": "^4.0.0",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
@@ -78,8 +80,6 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {}
     },
-    "platforms": [
-      "ios"
-    ]
+    "platforms": []
   }
 }
