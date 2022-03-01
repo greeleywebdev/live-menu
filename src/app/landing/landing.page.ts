@@ -15,7 +15,8 @@ export class LandingPage implements OnInit {
     this.data.hideMenuHeader = true;
   }
 
-  login() {
+  login(merchantId: string) {
+    this.data.merchantId = merchantId;
     this.router.navigate(['/home']);
   }
 

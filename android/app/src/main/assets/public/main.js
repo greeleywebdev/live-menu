@@ -80,20 +80,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "AppComponent": () => (/* binding */ AppComponent)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 4762);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 4762);
 /* harmony import */ var _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !raw-loader!./app.component.html */ 1106);
 /* harmony import */ var _app_component_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component.scss */ 3069);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 7716);
+/* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/data.service */ 2468);
+
 
 
 
 
 let AppComponent = class AppComponent {
-    constructor() { }
+    constructor(data) {
+        this.data = data;
+        // this.getColors();
+    }
+    getColors() {
+        this.data.getMerchantBranding().then(data => {
+            //   // Look into libraries for this!
+            document.querySelector(':root').style.cssText = "--ion-color-primary: " + data.primaryColor + "; --ion-color-secondary: " + data.secondaryColor + "; --ion-color-tertiary: " + data.tertiaryColor + ";";
+        });
+    }
 };
-AppComponent.ctorParameters = () => [];
-AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.Component)({
+AppComponent.ctorParameters = () => [
+    { type: _services_data_service__WEBPACK_IMPORTED_MODULE_2__.DataService }
+];
+AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
         selector: 'app-root',
         template: _raw_loader_app_component_html__WEBPACK_IMPORTED_MODULE_0__.default,
         styles: [_app_component_scss__WEBPACK_IMPORTED_MODULE_1__.default]
@@ -295,16 +308,22 @@ let DataService = class DataService {
         });
     }
     getFullMenu(merchantId) {
-        return Http.get(_models_Endpoints__WEBPACK_IMPORTED_MODULE_0__.ENDPOINTS.getFullMenu + merchantId);
+        return Http.get({
+            url: _models_Endpoints__WEBPACK_IMPORTED_MODULE_0__.ENDPOINTS.getFullMenu + merchantId,
+        });
     }
     saveChanges(merchantId, changedMenu) {
-        return Http.put(_models_Endpoints__WEBPACK_IMPORTED_MODULE_0__.ENDPOINTS.updateMerchantMenu + merchantId, changedMenu).then(data => {
-            console.log('Success');
-        })
-            .catch(error => {
-            console.log(error.status);
-            console.log(error.error); // error message as string
-            console.log(error.headers);
+        return Http.request({
+            method: 'PUT',
+            url: _models_Endpoints__WEBPACK_IMPORTED_MODULE_0__.ENDPOINTS.updateMerchantMenu + merchantId,
+            headers: { 'Content-Type': 'application/json' },
+            data: changedMenu
+        });
+    }
+    getMerchantBranding() {
+        return Http.request({
+            method: 'GET',
+            url: 'assets/files/brandingExample.json'
         });
     }
 };

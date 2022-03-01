@@ -17,8 +17,6 @@ def capacitor_pods
   pod 'CordovaPlugins', :path => '../capacitor-cordova-ios-plugins'
 end
 
-project '/Volumes/Extreme SSD/Senior Design/1. Client Side/live-menu/ios/App/App.xcodeproj'
-
 target 'App' do
   capacitor_pods
   # Add your Pods here

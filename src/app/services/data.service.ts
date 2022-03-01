@@ -41,20 +41,25 @@ export class DataService {
   }
 
   public getFullMenu(merchantId: string): any {
-    return Http.get(ENDPOINTS.getFullMenu + merchantId);
+    return Http.get({
+      url: ENDPOINTS.getFullMenu + merchantId,
+    })
   }
 
   public saveChanges(merchantId, changedMenu): any {
-    return Http.put(ENDPOINTS.updateMerchantMenu + merchantId, changedMenu).then(data => {
-      console.log('Success');
+    return Http.request({
+      method: 'PUT',
+      url: ENDPOINTS.updateMerchantMenu + merchantId,
+      headers: { 'Content-Type': 'application/json' },
+      data: changedMenu
     })
-    .catch(error => {
+  }
 
-      console.log(error.status);
-      console.log(error.error); // error message as string
-      console.log(error.headers);
-  
-    });
+  public getMerchantBranding(): any {
+    return Http.request({
+      method: 'GET',
+      url: 'assets/files/brandingExample.json'
+    })
   }
 
 }

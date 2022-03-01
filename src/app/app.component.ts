@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(public data: DataService) {
+    // this.getColors();
+  }
+
+  getColors(): void {
+    this.data.getMerchantBranding().then(data  => {
+    //   // Look into libraries for this!
+      (document.querySelector(':root') as HTMLElement).style.cssText = "--ion-color-primary: " + data.primaryColor + "; --ion-color-secondary: " + data.secondaryColor + "; --ion-color-tertiary: " + data.tertiaryColor + ";";
+    });
+  }
 }

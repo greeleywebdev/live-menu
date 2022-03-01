@@ -115,7 +115,8 @@ let LandingPage = class LandingPage {
     ngOnInit() {
         this.data.hideMenuHeader = true;
     }
-    login() {
+    login(merchantId) {
+        this.data.merchantId = merchantId;
         this.router.navigate(['/home']);
     }
 };
@@ -161,7 +162,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <ion-card mode=\"ios\">\n          <img src=\"/assets/stock-photos/large_personScanning.jpg\" />\n          <ion-card-header>\n            <ion-card-title>LiveMenu</ion-card-title>\n          </ion-card-header>\n          <ion-card-content>\n            <ion-button fill=\"solid\" expand=\"block\">Register</ion-button>\n            <ion-button fill=\"outline\" expand=\"block\" (click)=\"login()\">Log In</ion-button>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("<ion-content>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <ion-card mode=\"ios\">\n          <img src=\"/assets/stock-photos/large_personScanning.jpg\" />\n          <ion-card-header>\n            <ion-card-title>LiveMenu</ion-card-title>\n          </ion-card-header>\n          <ion-card-content>\n            <ion-button fill=\"solid\" expand=\"block\" (click)=\"login('621e4d25b83cd3c65f0f99ea')\">Rhinegeist</ion-button>\n            <ion-button fill=\"outline\" expand=\"block\" (click)=\"login('6189917c5cb1dd7c4aac10ed')\">Northern Row</ion-button>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>");
 
 /***/ })
 

@@ -29,6 +29,8 @@ export class HomePage {
   constructor(private data: DataService, private titleService: Title, public modalController: ModalController) { }
 
   ngOnInit(): void {
+    this.data.presentLoader();
+    this.getColors();
     this.getMenu();
   }
 
@@ -38,40 +40,32 @@ export class HomePage {
     }, 3000);
   }
 
-  // getMenu(): Menu[] {
-  //   this.editableMenu = undefined;
-  //   return this.data.getFullMenu('6189917c5cb1dd7c4aac10ed').subscribe(data => {
-  //     this.titleService.setTitle('LiveMenu | ' + data.name);
-  //     this.data.merchantLogo = data.logo;
-  //     this.editableMenu = data;
-  //     delete this.editableMenu._id;
-  //     this.menu = data.menu.categories;
-  //     // These 3 cause the reload issue on other tabs
-  //     this.defaultSegment = this.menu[1].name;
-  //     this.activeSegment = this.defaultSegment;
-  //     this.shownMenu = this.menu[1].sections;
-  //     // ........................................
-  //     const address = data.address
-  //     this.activeLocation = address.street_name + ", " + address.city;
-  //   });
-  // }
-
   async getMenu() {
-    return Http.get({
-      url: ENDPOINTS.getFullMenu + this.data.merchantId,
-    })
+    return this.data.getFullMenu(this.data.merchantId)
       .then(({ data }) => {
+        console.log
         this.titleService.setTitle('LiveMenu | ' + data.name);
         this.data.merchantLogo = data.logo;
         this.editableMenu = data;
         delete this.editableMenu._id;
         this.menu = data.menu.categories;
-        this.defaultSegment = this.menu[1].name;
+        this.defaultSegment = this.menu[0].name;
         this.activeSegment = this.defaultSegment;
-        this.shownMenu = this.menu[1].sections;
+        this.shownMenu = this.menu[0].sections;
         const address = data.address
         this.activeLocation = address.street_name + ", " + address.city;
+        this.data.dismissLoader();
       });
+  }
+
+  getColors() {
+    if (this.data.merchantId === '621e4d25b83cd3c65f0f99ea') {
+      // Rhinegeist
+      (document.querySelector(':root') as HTMLElement).style.cssText = "--ion-color-primary: " + "#00263E";
+    } else if (this.data.merchantId === '6189917c5cb1dd7c4aac10ed') {
+      // Northern Row
+      (document.querySelector(':root') as HTMLElement).style.cssText = "--ion-color-primary: " + "#DC4649";
+    }
   }
 
   segmentChanged(ev: any): void {
@@ -107,38 +101,6 @@ export class HomePage {
   }
 
 
-  // itemToggle(ev: any, item): void {
-  //   this.clearSearchValue();
-  //   const checkedValue = ev.detail.checked;
-  //   const menuItem = item;
-  //   this.editableMenu.menu.categories.forEach(category => {
-  //     if (this.activeSegment === category.name) {
-  //       for (const section of category.sections) {
-  //         for (const item of section.items) {
-  //           if (item.name.toLowerCase() === menuItem.toLowerCase()) {
-  //             item.is_active = checkedValue;
-  //           }
-  //         }
-  //       }
-  //     }
-  //   });
-  //   this.data.saveChanges(this.data.merchantId, this.editableMenu);
-  //   setTimeout(() => {
-  //     this.editableMenu = undefined;
-  //     return this.data.getFullMenu(this.data.merchantId).subscribe(data => {
-  //       this.titleService.setTitle('LiveMenu | ' + data.name);
-  //       this.editableMenu = data;
-  //       delete this.editableMenu._id;
-  //       this.menu = data.menu.categories;
-  //       for (var i in this.menu) {
-  //         if (this.activeSegment === this.menu[i].name) {
-  //           this.shownMenu = this.menu[i].sections;
-  //         }
-  //       }
-  //     });
-  //   }, 100);
-  // }
-
   itemToggle(ev: any, item) {
     this.clearSearchValue();
     const checkedValue = ev.detail.checked;
@@ -154,17 +116,10 @@ export class HomePage {
         }
       }
     });
-    return Http.request({
-      method: 'PUT',
-      url: ENDPOINTS.updateMerchantMenu + this.data.merchantId,
-      headers: { "Content-Type": "application/json" },
-      data: this.editableMenu
-    }).then(() => {
+    return this.data.saveChanges(this.data.merchantId, this.editableMenu).then(() => {
       setTimeout(() => {
         this.editableMenu = undefined;
-        return Http.get({
-          url: ENDPOINTS.getFullMenu + this.data.merchantId,
-        }).then(({ data }) => {
+        return this.data.getFullMenu(this.data.merchantId).then(({ data }) => {
           this.titleService.setTitle('LiveMenu | ' + data.name);
           this.editableMenu = data;
           delete this.editableMenu._id;
