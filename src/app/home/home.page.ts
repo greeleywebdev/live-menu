@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ModalController } from '@ionic/angular';
 import { LocationModalComponent } from '../components/location-modal/location-modal.component';
-import { Category, Menu } from '../models/menu';
+import { Menu } from '../models/menu';
 import { DataService } from '../services/data.service';
 
 import '@capacitor-community/http';

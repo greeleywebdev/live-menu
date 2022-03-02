@@ -12,9 +12,6 @@ export class HeaderComponent implements OnInit {
   constructor(public data: DataService) { }
 
   ngOnInit() {
-    this.data.getFullMenu(this.data.merchantId).subscribe(data => {
-      this.imgSrc = data.logo;
-    });
   }
 
 }
