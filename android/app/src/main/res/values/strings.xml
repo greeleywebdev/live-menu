@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">LiveMenu</string>
+    <string name="title_activity_main">LiveMenu</string>
+    <string name="package_name">com.livemenu</string>
+    <string name="custom_url_scheme">com.livemenu</string>
+</resources>

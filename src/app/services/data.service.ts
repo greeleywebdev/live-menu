@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { LoadingController } from '@ionic/angular';
 import { ENDPOINTS } from '../models/Endpoints';
+
+import '@capacitor-community/http';
+import { Plugins } from '@capacitor/core';
+const { Http } = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +15,13 @@ export class DataService {
   merchantLogo: string;
   merchantId = "6189917c5cb1dd7c4aac10ed";
   showLoader = false;
+  hideMenuHeader = false;
 
-  constructor(private httpClient: HttpClient, private loadingController: LoadingController) { }
+  httpHeader = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+  constructor(private loadingController: LoadingController) { }
 
   async presentLoader() {
     this.showLoader = true;
@@ -32,15 +41,25 @@ export class DataService {
   }
 
   public getFullMenu(merchantId: string): any {
-    return this.httpClient.get(ENDPOINTS.getFullMenu + merchantId);
+    return Http.get({
+      url: ENDPOINTS.getFullMenu + merchantId,
+    })
   }
 
   public saveChanges(merchantId, changedMenu): any {
-    return this.httpClient.put('http://127.0.0.1:8000/merchants/' + merchantId, changedMenu).subscribe({
-      error: error => {
-        console.error('There was an error!', error);
-      }
-    });
+    return Http.request({
+      method: 'PUT',
+      url: ENDPOINTS.updateMerchantMenu + merchantId,
+      headers: { 'Content-Type': 'application/json' },
+      data: changedMenu
+    })
+  }
+
+  public getMerchantBranding(): any {
+    return Http.request({
+      method: 'GET',
+      url: 'assets/files/brandingExample.json'
+    })
   }
 
 }

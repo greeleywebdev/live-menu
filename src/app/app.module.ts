@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { HTTP } from '@awesome-cordova-plugins/http/ngx';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -33,7 +34,8 @@ const components = [
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    HttpClient],
+    HttpClient,
+  HTTP],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
