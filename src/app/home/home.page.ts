@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { LocationModalComponent } from '../components/location-modal/location-modal.component';
 import { Menu } from '../models/menu';
 import { DataService } from '../services/data.service';
@@ -26,7 +26,7 @@ export class HomePage {
   hideSections = false;
   listOfChanges = [];
 
-  constructor(private data: DataService, private titleService: Title, public modalController: ModalController) { }
+  constructor(private data: DataService, private titleService: Title, private navCtrl: NavController, public modalController: ModalController, public alertController: AlertController) { }
 
   ngOnInit(): void {
     this.data.presentLoader();
@@ -148,6 +148,30 @@ export class HomePage {
     };
     this.searchValue = ev.target.value;
     this.search(ev);
+  }
+
+  async logout() {
+    const alert = await this.alertController.create({
+      mode: 'ios',
+      cssClass: 'my-custom-class',
+      header: 'Logging Out',
+      message: 'Are you sure you want to log out?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+        }, {
+          text: 'Logout',
+          handler: () => {
+            (document.querySelector(':root') as HTMLElement).style.cssText = "--ion-color-primary: " + "#FF0000";
+            this.navCtrl.navigateBack('/login'); 
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 

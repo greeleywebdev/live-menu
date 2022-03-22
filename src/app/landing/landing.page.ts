@@ -15,7 +15,6 @@ export class LandingPage implements OnInit {
 
   ngOnInit() {
     this.data.hideMenuHeader = true;
-    (document.querySelector(':root') as HTMLElement).style.cssText = "--ion-color-primary: " + "#FF0000";
   }
 
   login() {
