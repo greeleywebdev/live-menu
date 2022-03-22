@@ -80,9 +80,7 @@ export class HomePage {
 
   search(ev: any): void {
     const searchValue = ev.target.value.toLowerCase();
-
     const items = []
-
     for (let i in this.shownMenu) {
       this.shownMenu[i].items.forEach(element => {
         items.push(element);
@@ -130,7 +128,7 @@ export class HomePage {
             }
           }
         });
-      }, 100);
+      }, 200);
     });
   }
 

@@ -1,15 +1,28 @@
-ion-card {
-    max-width: 24rem;
-    margin-left: auto;
-    margin-right: auto;
-    top: 50%;
-    ion-button {
-        [solid] {
-            background-color: #DC4649;
-        }
-        [outline] {
-            color: #DC4649; 
-            border: #DC4649;
-        }
+:host {
+    .background-img {
+        --background: url("../../assets/stock-photos/landing-background.jpg") 0 0/100% 100% no-repeat;
     }
+}
+
+ion-card {
+    top: 40%;
+
+    [login-btn] {
+        margin-top: 24px;
+        width: 95%;
+    }
+
+    ion-item {
+        --padding-start: 0;
+    }
+
+    ion-card-content {
+        padding: 0 0 1rem 0;
+        margin-right: 16px;
+        margin-left: 16px;
+    }
+}
+
+[center-align] {
+    margin: 12px;
 }

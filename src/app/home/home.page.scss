@@ -14,6 +14,16 @@ ion-segment {
     margin-bottom: 16px;
 }
 
+ion-item {
+    --padding-start: 0;
+    div {
+        width: 100%;
+        margin-top: 16px;
+        margin-bottom: 8px;
+        margin-left: 8px;
+    }
+}
+
 [section-header] {
     margin-left: 8px;
     font-family: "Arvo", serif;

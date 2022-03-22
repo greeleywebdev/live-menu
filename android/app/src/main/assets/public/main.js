@@ -213,9 +213,6 @@ let HeaderComponent = class HeaderComponent {
         this.data = data;
     }
     ngOnInit() {
-        this.data.getFullMenu(this.data.merchantId).subscribe(data => {
-            this.imgSrc = data.logo;
-        });
     }
 };
 HeaderComponent.ctorParameters = () => [
@@ -655,7 +652,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("[app-header] {\n  height: 8rem;\n  --background: #dc4649;\n  --border-style: none;\n  text-align: center;\n}\n[app-header] img {\n  margin-top: 0.66rem;\n  width: 6rem;\n  height: auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImhlYWRlci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQUE7RUFDQSxxQkFBQTtFQUNBLG9CQUFBO0VBQ0Esa0JBQUE7QUFDSjtBQUFJO0VBQ0ksbUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtBQUVSIiwiZmlsZSI6ImhlYWRlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlthcHAtaGVhZGVyXSB7XG4gICAgaGVpZ2h0OiA4cmVtO1xuICAgIC0tYmFja2dyb3VuZDogI2RjNDY0OTtcbiAgICAtLWJvcmRlci1zdHlsZTogbm9uZTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgaW1nIHtcbiAgICAgICAgbWFyZ2luLXRvcDogLjY2cmVtO1xuICAgICAgICB3aWR0aDogNnJlbTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgIH1cbn1cbiJdfQ== */");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("[app-header] {\n  height: 8rem;\n  --border-style: none;\n  text-align: center;\n}\n[app-header] img {\n  margin-top: 0.66rem;\n  width: 6rem;\n  height: auto;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImhlYWRlci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQUE7RUFDQSxvQkFBQTtFQUNBLGtCQUFBO0FBQ0o7QUFBSTtFQUNJLG1CQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7QUFFUiIsImZpbGUiOiJoZWFkZXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJbYXBwLWhlYWRlcl0ge1xuICAgIGhlaWdodDogOHJlbTtcbiAgICAtLWJvcmRlci1zdHlsZTogbm9uZTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgaW1nIHtcbiAgICAgICAgbWFyZ2luLXRvcDogLjY2cmVtO1xuICAgICAgICB3aWR0aDogNnJlbTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgIH1cbn1cbiJdfQ== */");
 
 /***/ }),
 

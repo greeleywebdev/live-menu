@@ -245,36 +245,38 @@ let HomePage = class HomePage {
         });
     }
     itemToggle(ev, item) {
-        this.clearSearchValue();
+        console.log(item);
+        // this.clearSearchValue();
         const checkedValue = ev.detail.checked;
-        const menuItem = item;
-        this.editableMenu.menu.categories.forEach(category => {
-            if (this.activeSegment === category.name) {
-                for (const section of category.sections) {
-                    for (const item of section.items) {
-                        if (item.name.toLowerCase() === menuItem.toLowerCase()) {
-                            item.is_active = checkedValue;
-                        }
-                    }
-                }
-            }
-        });
-        return this.data.saveChanges(this.data.merchantId, this.editableMenu).then(() => {
-            setTimeout(() => {
-                this.editableMenu = undefined;
-                return this.data.getFullMenu(this.data.merchantId).then(({ data }) => {
-                    this.titleService.setTitle('LiveMenu | ' + data.name);
-                    this.editableMenu = data;
-                    delete this.editableMenu._id;
-                    this.menu = data.menu.categories;
-                    for (var i in this.menu) {
-                        if (this.activeSegment === this.menu[i].name) {
-                            this.shownMenu = this.menu[i].sections;
-                        }
-                    }
-                });
-            }, 100);
-        });
+        console.log(checkedValue);
+        // const menuItem = item;
+        // this.editableMenu.menu.categories.forEach(category => {
+        //   if (this.activeSegment === category.name) {
+        //     for (const section of category.sections) {
+        //       for (const item of section.items) {
+        //         if (item.name.toLowerCase() === menuItem.toLowerCase()) {
+        //           item.is_active = checkedValue;
+        //         }
+        //       }
+        //     }
+        //   }
+        // });
+        // return this.data.saveChanges(this.data.merchantId, this.editableMenu).then(() => {
+        // setTimeout(() => {
+        // this.editableMenu = undefined;
+        // return this.data.getFullMenu(this.data.merchantId).then(({ data }) => {
+        //   this.titleService.setTitle('LiveMenu | ' + data.name);
+        //   this.editableMenu = data;
+        //   delete this.editableMenu._id;
+        //   this.menu = data.menu.categories;
+        //   for (var i in this.menu) {
+        //     if (this.activeSegment === this.menu[i].name) {
+        //       this.shownMenu = this.menu[i].sections;
+        //     }
+        //   }
+        // });
+        // }, 200);
+        // });
     }
     presentLocationModal() {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, function* () {

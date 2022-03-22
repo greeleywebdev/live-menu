@@ -1,18 +1,45 @@
-<ion-content>
+<ion-content class="background-img">
   <ion-grid>
     <ion-row>
       <ion-col>
         <ion-card mode="ios">
-          <img src="/assets/stock-photos/large_personScanning.jpg" />
+          <!-- <img src="/assets/stock-photos/large_personScanning.jpg" /> -->
           <ion-card-header>
             <ion-card-title>LiveMenu</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <ion-button fill="solid" expand="block" (click)="login('621e4d25b83cd3c65f0f99ea')">Rhinegeist</ion-button>
-            <ion-button fill="outline" expand="block" (click)="login('6189917c5cb1dd7c4aac10ed')">Northern Row</ion-button>
+            <ion-row>
+              <ion-item full-width>
+                <ion-label position="floating"> Username </ion-label>
+                <ion-input value="{{username}}" (ionInput)="usernameChanged($event.target.value)"></ion-input>
+              </ion-item>
+            </ion-row>
+            <ion-row>
+              <ion-item full-width>
+                <ion-label position="floating"> Password </ion-label>
+                <ion-input value="{{password}}" (ionInput)="passwordChanged($event.target.value)" type="password">
+                </ion-input>
+              </ion-item>
+            </ion-row>
+            <ion-row center-align>
+              <ion-col>
+                <ion-button login-btn mode="ios" color="primary" (click)="login()">Login</ion-button>
+              </ion-col>
+            </ion-row>
+            <ion-row center-align>
+              <ion-col>
+                <ion-label> or </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row center-align>
+              <ion-col>
+                <ion-label color="primary">Create Account</ion-label>
+              </ion-col>
+            </ion-row>
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
+
   </ion-grid>
 </ion-content>
